@@ -1,10 +1,10 @@
 const { build } = require("esbuild");
 
 build({
-  entryPoints: ["./items.tsx"],
+  entryPoints: ["./index.tsx"],
   bundle: true,
   minify: true,
   format: "esm",
   sourcemap: false,
-  outdir: "dist",
+  outfile: "dist/compiled.js",
 });
