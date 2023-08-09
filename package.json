@@ -3,9 +3,16 @@
   "description": "My extension description",
   "authors": "author",
   "version": "1.0.0",
+  "scripts": {
+    "build": "node build.js"
+  },
   "dependencies": {
-    "sittly-devtools": "^1.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sittly-devtools": "^1.0.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0",
+    "typescript": "^5.1.6"
   }
 }

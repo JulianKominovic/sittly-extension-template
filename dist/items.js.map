@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../items.tsx"],
+  "sourcesContent": ["import { ExtensionItems } from \"sittly-devtools/dist/types\";\nimport React from \"react\";\nimport { sendNotification } from \"sittly-devtools/dist/api/notifications\";\nconst items: ExtensionItems = () => {\n  return [\n    {\n      title: \"Previous\",\n      description: \"Play previous song\",\n      icon: <div>a</div>,\n      onClick: () => {\n        sendNotification({\n          title: \"Test\",\n          body: \"Test\",\n          icon: \"dialog-information\",\n        });\n      },\n    },\n  ];\n};\n\nexport default items;\n"],
+  "mappings": "AACA,OAAOA,MAAW,QAClB,OAAS,oBAAAC,MAAwB,yCACjC,MAAMC,EAAwB,IACrB,CACL,CACE,MAAO,WACP,YAAa,qBACb,KAAMF,EAAA,cAAC,WAAI,GAAC,EACZ,QAAS,IAAM,CACbC,EAAiB,CACf,MAAO,OACP,KAAM,OACN,KAAM,oBACR,CAAC,CACH,CACF,CACF,EAGF,IAAOE,EAAQD",
+  "names": ["React", "sendNotification", "items", "items_default"]
+}
