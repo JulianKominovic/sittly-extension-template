@@ -1,17 +1,22 @@
-import { ExtensionItems, ExtensionPage } from "sittly-devtools/dist/types";
 import React from "react";
+import { ExtensionItems, ExtensionMetadata } from "sittly-devtools/dist/types";
 import { sendNotification } from "sittly-devtools/dist/api/notifications";
-
+import { BsAppIndicator } from "react-icons/bs";
+/**
+ * Read the docs :D
+ * @see docs.com
+ *
+ */
 const items: ExtensionItems = () => {
   return [
     {
-      title: "Previous",
-      description: "Play previous song",
-      icon: <div>a</div>,
+      title: "Example item",
+      description: "My beautiful description",
+      icon: <BsAppIndicator />,
       onClick: () => {
         sendNotification({
-          title: "Test",
-          body: "Test",
+          title: "Example notification",
+          body: "This is a **test!**",
           icon: "dialog-information",
         });
       },
@@ -19,20 +24,15 @@ const items: ExtensionItems = () => {
   ];
 };
 
-const pages: ExtensionPage[] = [
-  {
-    name: "ext test",
-    route: "/test",
-    component: () => {
-      return (
-        <main className="flex flex-col h-full gap-4 px-4 py-2 overflow-y-auto">
-          test
-        </main>
-      );
-    },
-    description: "Test page",
-    icon: <div>P</div>,
-  },
-];
+/**
+ * Metadata is really important, it's used to display your extension in the app.
+ * @see docs.com
+ */
+const metadata: ExtensionMetadata = {
+  name: "Example extension",
+  description: "This is an example extension",
+  icon: <BsAppIndicator />,
+  repoUrl: "https://github.com/JulianKominovic/sittly-extension-template",
+};
 
-export { items, pages };
+export { items, metadata };
