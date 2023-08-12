@@ -10,7 +10,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
-    "sittly-devtools": "^1.0.11",
+    "sittly-devtools": "latest",
     "unicode-emoji": "^2.4.0"
   },
   "devDependencies": {
