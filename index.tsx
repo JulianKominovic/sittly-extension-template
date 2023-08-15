@@ -1,38 +1,79 @@
-import React from "react";
-import { ExtensionItems, ExtensionMetadata } from "sittly-devtools/dist/types";
-import { sendNotification } from "sittly-devtools/dist/api/notifications";
-import { BsAppIndicator } from "react-icons/bs";
-/**
- * Read the docs :D
- * @see docs.com
- *
- */
-const items: ExtensionItems = () => {
-  return [
-    {
-      title: "Example item",
-      description: "My beautiful description",
-      icon: <BsAppIndicator />,
-      onClick: () => {
-        sendNotification({
-          title: "Example notification",
-          body: "This is a **test!**",
-          icon: "dialog-information",
-        });
-      },
+import { BsClipboard, BsEmojiSmile } from "react-icons/bs";
+import * as unicodeEmoji from "unicode-emoji";
+import { ExtensionMetadata, ExtensionPages } from "sittly-devtools/dist/types";
+
+const { components, hooks, api, register } = window.SittlyDevtools;
+const { Command } = components;
+const { useServices } = hooks;
+const { clipboard } = api;
+const { pasteToCurrentWindow, copyToClipboard } = clipboard;
+const emojis = unicodeEmoji.getEmojis();
+
+const pages: ExtensionPages = [
+  {
+    name: "Emojis",
+    route: "/emojis",
+    component: () => {
+      const setContextMenuOptions = useServices(
+        (state) => state.setContextMenuOptions
+      );
+      return (
+        <Command.Grid
+          id="emojis-page-grid"
+          columns={4}
+          items={emojis.map((emoji) => {
+            return {
+              onClick() {
+                pasteToCurrentWindow(emoji.emoji);
+              },
+              onHighlight() {
+                setContextMenuOptions([
+                  {
+                    title: "Copy",
+                    onClick() {
+                      copyToClipboard(emoji.emoji);
+                    },
+                    description: `Copy ${emoji.emoji} to the clipboard`,
+                    icon: <BsClipboard />,
+                  },
+                ]);
+              },
+              filteringText: emoji.description,
+              customChildren: (
+                <div
+                  style={{
+                    fontSize: "3rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {emoji.emoji}
+                </div>
+              ),
+              className: "flex items-center justify-center",
+            };
+          })}
+        />
+      );
     },
-  ];
-};
+    description: "A collection of emojis",
+    icon: <BsEmojiSmile />,
+  },
+];
 
 /**
  * Metadata is really important, it's used to display your extension in the app.
  * @see docs.com
  */
 const metadata: ExtensionMetadata = {
-  name: "Example extension",
-  description: "This is an example extension",
-  icon: <BsAppIndicator />,
-  repoUrl: "https://github.com/JulianKominovic/sittly-extension-template",
+  name: "Emojis",
+  description: "Emojis for everyone!",
+  icon: <BsEmojiSmile />,
+  repoUrl: "https://github.com/JulianKominovic/sittly-emoji-extension",
 };
 
-export { items, metadata };
+register({
+  pages,
+  metadata,
+});

@@ -4,7 +4,7 @@
   "authors": "author",
   "version": "1.0.0",
   "scripts": {
-    "build": "esbuild index.tsx --bundle --format=esm --external:react --external:sittly-devtools --outfile=dist/compiled.js"
+    "build": "node build.js"
   },
   "dependencies": {
     "react": "^18.2.0",
