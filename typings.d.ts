@@ -1,15 +1,9 @@
-import {
-  ExtensionContextMenuItems,
-  ExtensionItems,
-  ExtensionMetadata,
-  ExtensionNoResultItems,
-  ExtensionPages,
-} from "sittly-devtools/dist/types";
-import sittlyDevtools from "sittly-devtools";
+// eslint-disable-next-line no-restricted-imports
+import type sittlyDevtools from 'sittly-devtools'
 declare global {
   interface Window {
-    SittlyDevtools: typeof sittlyDevtools;
+    SittlyDevtools: typeof sittlyDevtools
   }
 }
 
-export {};
+export {}
