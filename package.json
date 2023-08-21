@@ -6,7 +6,9 @@
   "scripts": {
     "build": "npm run lint && npm run format && node build.js",
     "lint": "eslint --ext .js,.ts,.tsx .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|tsx)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|tsx)\"",
+    "postinstall": "npm run prepare",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -27,6 +29,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
+    "husky": "^8.0.0",
     "prettier": "^3.0.2",
     "typescript": "5.1.6"
   }
