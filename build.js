@@ -2,6 +2,16 @@
 
 const { build } = require('esbuild')
 
+const { name, description, authors } = require('./package.json')
+if (name === 'extension-name')
+  throw new Error('Please change the name in package.json')
+
+if (description === 'My extension description')
+  throw new Error('Please change the description in package.json')
+
+if (authors === 'author')
+  throw new Error('Please change the authors in package.json')
+
 build({
   entryPoints: ['src/index.tsx'],
   bundle: true,
