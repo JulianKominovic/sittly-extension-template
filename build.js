@@ -15,7 +15,7 @@ if (authors === 'author')
 build({
   entryPoints: ['src/index.tsx'],
   bundle: true,
-  minify: true,
+  minify: false,
   keepNames: true,
   minifyIdentifiers: false,
   minifySyntax: false,
